@@ -12,6 +12,7 @@ public class ControlPoi : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    public GameObject ScoreManager;
 
     public float Badtime = 1.0f;
     public float Goodtime = 1.0f;
@@ -73,12 +74,7 @@ public class ControlPoi : MonoBehaviour
         {
             Debug.Log("突き抜けた！");
 
-            //ここに得点、コンボ数計算
-            //=======================
-            
-            
-            
-            //=======================
+            ScoreManager.GetComponent<ScoreManagement>().ScoreUP(Nowtiming);
 
             this.GetComponent<BoxCollider2D>().enabled = false;
 
@@ -87,6 +83,8 @@ public class ControlPoi : MonoBehaviour
         else
         {
             Debug.Log("捕まった！");
+
+            ScoreManager.GetComponent<ScoreManagement>().ComboDown();
 
             this.GetComponent<BoxCollider2D>().enabled = false;
 

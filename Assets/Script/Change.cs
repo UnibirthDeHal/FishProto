@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,17 @@ public class Change : MonoBehaviour
     public Text cangeText;
     public Text comboText;
 
-    float prosperity = 0f;
-    float money = 0f;
-    float combo = 0f;
+    int prosperity = 0;
+    int money = 0;
+    int combo = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        prosperity = this.GetComponent<ScoreManagement>().Score;
+        money= this.GetComponent<ScoreManagement>().Money;
+        combo = this.GetComponent<ScoreManagement>().Combo;
+
         cangeText.text = "î…ê∑ìx\n" + prosperity + "\nÇ®ìXÇÃÇ®ã‡\n" + money;
         comboText.text = "COMBO\n" + combo;
     }
@@ -22,12 +27,10 @@ public class Change : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2)) 
-        {
-            prosperity += 10f;
-            money += 10f;
-            combo += 1f;
-        }
+        prosperity = this.GetComponent<ScoreManagement>().Score;
+        money = this.GetComponent<ScoreManagement>().Money;
+        combo = this.GetComponent<ScoreManagement>().Combo;
+
         cangeText.text = "î…ê∑ìx\n" + prosperity + "\nÇ®ìXÇÃÇ®ã‡\n" + money;
         comboText.text = "COMBO\n" + combo;
     }

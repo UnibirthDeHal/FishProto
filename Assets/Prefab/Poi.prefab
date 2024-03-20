@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8430242782038926441}
   animator: {fileID: 3049451405949943857}
+  ScoreManager: {fileID: 8083004763415395630, guid: 189d724eb85177447a5bd09d7c0dced2, type: 3}
   Badtime: 1
   Goodtime: 1
   Greattime: 0.5
