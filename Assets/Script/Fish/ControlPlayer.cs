@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static UnityEditor.Progress;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -17,7 +18,10 @@ public class ControlPlayer : MonoBehaviour
 
     public float dashSpeedMultiplier = 4f; // ダッシュ時の速度倍率
 
-    [HideInInspector] public int dir;
+    public int QTECount = 10;
+    public float BecaughtMaxtime = 3.0f;
+
+    [HideInInspector] public bool isDash ;
     [HideInInspector] public float timer_noInput;
     [HideInInspector] public float threshold_noInput;
     [HideInInspector] public Vector3 localAngle;
@@ -40,6 +44,7 @@ public class ControlPlayer : MonoBehaviour
         //初期化
         timer_noInput = 0;
         threshold_noInput = 0.1f;
+        isDash = false;
 
         _transform = transform;
         ChangeState(new Player_State_Idle(this));
@@ -74,9 +79,34 @@ public class ControlPlayer : MonoBehaviour
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         return stateInfo.IsName(animationName) && stateInfo.normalizedTime >= 1.0f;
     }
-
-    void OnTriggerEnter(Collider other)
+    public void GameOver()
     {
-        
+        Destroy(this.gameObject);
+    }
+
+    public bool isGoodTiming(ControlPoi poi)
+    {
+        if (isDash == true) 
+        {
+            if ((poi.Nowtiming == 1) || (poi.Nowtiming == 2))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void GetCaught(ControlPoi poi)
+    {
+        this.transform.position = poi.transform.position;
+
+        ChangeState(new Player_State_BeCaught(this));
     }
 }

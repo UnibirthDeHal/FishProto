@@ -8,8 +8,6 @@ public class Player_State_Dash : IState
     public Player_State_Dash(ControlPlayer player)
     {
         this.player = player;
-        elapsedTime = 0f;
-
     }
 
     public void Enter()
@@ -18,6 +16,7 @@ public class Player_State_Dash : IState
         player.SetAnimation("Dash");
         player.timer_noInput = 0; // timer reset
         elapsedTime = 0.0f;
+        player.isDash=true;
     }
 
     public void Execute()
@@ -41,6 +40,6 @@ public class Player_State_Dash : IState
 
     public void Exit()
     {
-
+        player.isDash = false;
     }
 }

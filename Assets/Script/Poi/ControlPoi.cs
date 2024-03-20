@@ -18,6 +18,8 @@ public class ControlPoi : MonoBehaviour
     public float Greattime = 0.5f;
 
     public int Nowtiming;
+    public int QTECount = 10;
+    public float BecaughtMaxtime = 3.5f;
 
     [HideInInspector] public float timer;
 
@@ -61,5 +63,37 @@ public class ControlPoi : MonoBehaviour
     public void EndPoi()
     {
         Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("当たった");
+
+        if (collision.gameObject.GetComponent<ControlPlayer>().isGoodTiming(this) == true)
+        {
+            Debug.Log("突き抜けた！");
+
+            //ここに得点、コンボ数計算
+            //=======================
+            
+            
+            
+            //=======================
+
+            this.GetComponent<BoxCollider2D>().enabled = false;
+
+            ChangeState(new State_Poi_Break(this));
+        }
+        else
+        {
+            Debug.Log("捕まった！");
+
+            this.GetComponent<BoxCollider2D>().enabled = false;
+
+            collision.gameObject.GetComponent<ControlPlayer>().GetCaught(this);
+
+            ChangeState(new State_Poi_Caught(this));
+        }
+ 
     }
 }

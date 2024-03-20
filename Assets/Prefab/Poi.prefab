@@ -126,6 +126,8 @@ MonoBehaviour:
   Goodtime: 1
   Greattime: 0.5
   Nowtiming: 0
+  QTECount: 10
+  BecaughtMaxtime: 3.5
   timer: 0
 --- !u!61 &4780165833667127500
 BoxCollider2D:

@@ -488,6 +488,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4780165833667127500, guid: 772ff372f2ff9b643b5a712f60a4ddbe, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5588148694904164220, guid: 772ff372f2ff9b643b5a712f60a4ddbe, type: 3}
       propertyPath: m_Name
       value: Poi
@@ -574,6 +578,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4859206989659550951, guid: dbdfca50760479c4c8666516c84ea589, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5819049109661920450, guid: dbdfca50760479c4c8666516c84ea589, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
