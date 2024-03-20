@@ -8,52 +8,35 @@ using UnityEngine.UI;
 using static UnityEditor.Progress;
 using static UnityEngine.EventSystems.EventTrigger;
 
-public class ControlPlayer : MonoBehaviour
+public class ControlPoi : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Animator animator;
-    public float move_speed = 5f;
-    public float dashDuration = 0.5f; // ダッシュの持続時間（デフォルトは1秒）
 
-    public float dashSpeedMultiplier = 4f; // ダッシュ時の速度倍率
+    public float Badtime = 1.0f;
+    public float Goodtime = 1.0f;
+    public float Greattime = 0.5f;
 
-    [HideInInspector] public int dir;
-    [HideInInspector] public float timer_noInput;
-    [HideInInspector] public float threshold_noInput;
-    [HideInInspector] public Vector3 localAngle;
-    [HideInInspector] public Vector3 DashDirection;
+    public int Nowtiming;
 
-    // Rigidbodyの定義を修正
-    private Rigidbody rb;
+    [HideInInspector] public float timer;
+
     private IState currentState;
-    private Transform _transform;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>(); // Rigidbodyコンポーネントの取得
     }
 
     void Start()
     {
-        //初期化
-        timer_noInput = 0;
-        threshold_noInput = 0.1f;
-
-        _transform = transform;
-        ChangeState(new Player_State_Idle(this));
+        ChangeState(new State_Poi_Bad1(this));
     }
 
     void Update()
     {
         currentState?.Execute();
-
-        // スペースキーが押され、かつ移動状態である場合にダッシュ状態に遷移する
-        if (Input.GetKeyDown(KeyCode.Space) && currentState is Player_State_Move)
-        {
-            ChangeState(new Player_State_Dash(this));
-        }
     }
 
     // 状態を変更するメソッド
@@ -75,8 +58,8 @@ public class ControlPlayer : MonoBehaviour
         return stateInfo.IsName(animationName) && stateInfo.normalizedTime >= 1.0f;
     }
 
-    void OnTriggerEnter(Collider other)
+    public void EndPoi()
     {
-        
+        Destroy(this.gameObject);
     }
 }
