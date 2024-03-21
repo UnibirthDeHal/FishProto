@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ScoreManagement : MonoBehaviour
 {
-    public int Score;
-    public int Money;
-    public int Combo;
+    public int Score=0;
+    public int Money=1000;
+    public int Combo=0;
 
     public int Basescore = 100;
     public int Basemoney = 50;

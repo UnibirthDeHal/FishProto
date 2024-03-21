@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4027147368765299984}
   - component: {fileID: 6994069534749781869}
   - component: {fileID: 17649164299195015}
+  - component: {fileID: 3504713940222794227}
   m_Layer: 0
   m_Name: ScoreManagement
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
-  Money: 0
+  Money: 1000
   Combo: 0
   Basescore: 100
   Basemoney: 50
@@ -64,3 +65,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cangeText: {fileID: 0}
   comboText: {fileID: 0}
+  Bossimage: {fileID: 0}
+  Userimage: {fileID: 0}
+  BossVideo1: {fileID: 0}
+  BossVideo2: {fileID: 0}
+  BossVideo3: {fileID: 0}
+--- !u!114 &3504713940222794227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083004763415395630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb13a2f00096849438929dc0d33bbd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poiPrefab: {fileID: 5588148694904164220, guid: 772ff372f2ff9b643b5a712f60a4ddbe, type: 3}
+  spawnInterval: 5
+  minX: -20
+  maxX: 20
+  minY: -12
+  maxY: 5.5
