@@ -29,7 +29,7 @@ public class Change : MonoBehaviour
         money= this.GetComponent<ScoreManagement>().Money;
         combo = this.GetComponent<ScoreManagement>().Combo;
 
-        TargetPros = prosperity + 100;
+        TargetPros = prosperity + 200;
 
         cangeText.text = "î…ê∑ìx\n" + prosperity + "\nÇ®ìXÇÃÇ®ã‡\n" + money;
         comboText.text = "COMBO\n" + combo;
@@ -54,13 +54,13 @@ public class Change : MonoBehaviour
 
                 break;
 
-            case 1:
+            case 2:
 
                     Bossimage.GetComponent<VideoPlayer>().clip = BossVideo2;
 
                 break;
 
-            case 2:
+            case 4:
 
                     Bossimage.GetComponent<VideoPlayer>().clip = BossVideo3;
 
@@ -70,7 +70,7 @@ public class Change : MonoBehaviour
         if (prosperity >= TargetPros)
         {
             Instantiate(Userimage, (Userimage.transform.position + new Vector3(425.0f + (count * 50.0f), 210.0f, 0.0f)), Quaternion.identity, Canvas);
-            TargetPros += 100;
+            TargetPros += 200;
             count++;
         }
     }
