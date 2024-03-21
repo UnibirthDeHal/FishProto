@@ -69,7 +69,7 @@ public class Change : MonoBehaviour
 
         if (prosperity >= TargetPros)
         {
-            Instantiate(Userimage, (Userimage.transform.position + new Vector3(425.0f + (count * 50.0f), 210.0f, 0.0f)), Quaternion.identity, Canvas);
+            Instantiate(Userimage, (Userimage.transform.position + new Vector3(625.0f + (count * 50.0f), 450.0f, 0.0f)), Quaternion.identity, Canvas);
             TargetPros += 200;
             count++;
         }
